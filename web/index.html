@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en" data-editorial-mode="paper">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BeamNow — Quiet Software for Loud Ideas | Pure-Rust Coding Agent</title>
+  <meta name="description" content="A minimal, pure-Rust desktop coding agent with customizable themes, zero-key free models, and local workspace tools. Public domain under the Unlicense." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=JetBrains+Mono:ital,wght@0,400;0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <!-- Subtle film grain overlay -->
+  <div class="film-grain" aria-hidden="true"></div>
+
+  <!-- Top Editorial Masthead -->
+  <header class="masthead">
+    <div class="masthead-inner">
+      <div class="masthead-left">
+        <span class="mono-tag">ISSUE NO. 01</span>
+        <span class="masthead-divider">/</span>
+        <span class="mono-tag hide-sm">PURE-RUST DESKTOP AGENT</span>
+      </div>
+
+      <a href="#" class="masthead-brand" aria-label="BeamNow Home">
+        <span class="brand-diamond">◆</span>
+        <span class="brand-wordmark">BeamNow</span>
+      </a>
+
+      <nav class="masthead-nav" aria-label="Primary Navigation">
+        <a href="#film" class="nav-link">01. The Film</a>
+        <a href="#atelier" class="nav-link">02. Theme Atelier</a>
+        <a href="#architecture" class="nav-link">03. Architecture</a>
+        <button id="editorialModeToggle" class="mode-pill" type="button" title="Toggle Ink / Paper editorial reading mode">
+          <span class="mode-dot"></span>
+          <span id="editorialModeLabel">Edition: Paper</span>
+        </button>
+        <a href="https://github.com/ahpah-dev/beamnow/releases/download/v0.1.0/beamnow.exe" class="masthead-cta">
+          Download .EXE
+        </a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- ================================================================
+         HERO SPREAD — EDITORIAL FRONT PAGE
+         ================================================================ -->
+    <section class="hero-spread">
+      <div class="container">
+        <div class="editorial-kicker-row">
+          <span class="mono-label">DISPATCH — AUTUMN / WINTER EDITION</span>
+          <span class="mono-label">UNLICENSE · PUBLIC DOMAIN · v0.1.0</span>
+        </div>
+
+        <div class="hero-grid">
+          <div class="hero-headline-col">
+            <h1 class="editorial-display">
+              Quiet software<br />
+              for <em>loud</em> ideas.
+            </h1>
+            <p class="editorial-lead">
+              Most coding environments clamor for your attention with docks, telemetry, and chrome.
+              <strong>BeamNow</strong> strips the agent down to its essence: a single, borderless native Rust window,
+              six surgical filesystem &amp; shell tools, zero-cost models out of the box, and a palette that adapts to how you think.
+            </p>
+
+            <div class="hero-cta-group">
+              <a href="https://github.com/ahpah-dev/beamnow/releases/download/v0.1.0/beamnow.exe" class="btn-editorial-primary">
+                <span>Download BeamNow.exe</span>
+                <span class="btn-meta">Windows x64 · v0.1.0</span>
+              </a>
+              <button id="heroWatchFilmBtn" type="button" class="btn-editorial-secondary">
+                <span class="play-glyph">▶</span>
+                <span>Play Editorial Commercial</span>
+                <span class="btn-meta">0:17 · Sound On</span>
+              </button>
+              <a href="https://github.com/ahpah-dev/beamnow" target="_blank" rel="noopener" class="btn-editorial-ghost">
+                GitHub Repository ↗
+              </a>
+            </div>
+          </div>
+
+          <aside class="hero-spec-col" aria-label="Technical Index">
+            <div class="spec-card">
+              <div class="spec-card-header">
+                <span class="mono-tag">SPECIFICATION INDEX</span>
+                <span class="status-pip">● LIVE RELEASE</span>
+              </div>
+              <dl class="spec-list">
+                <div class="spec-row">
+                  <dt>Runtime</dt>
+                  <dd>Native Rust · <code>eframe 0.37</code></dd>
+                </div>
+                <div class="spec-row">
+                  <dt>Default Router</dt>
+                  <dd><code>kilo-auto/free</code> (No API Key)</dd>
+                </div>
+                <div class="spec-row">
+                  <dt>BYOK Providers</dt>
+                  <dd>Anthropic, OpenAI, OpenRouter, NVIDIA, DeepSeek, Custom</dd>
+                </div>
+                <div class="spec-row">
+                  <dt>Agent Tools</dt>
+                  <dd><code>read</code> · <code>write</code> · <code>edit</code> · <code>list</code> · <code>grep</code> · <code>shell</code></dd>
+                </div>
+                <div class="spec-row">
+                  <dt>Theme Engine</dt>
+                  <dd>7 Curated Presets + 14-Slot RGB Atelier</dd>
+                </div>
+                <div class="spec-row">
+                  <dt>License</dt>
+                  <dd><a href="https://github.com/ahpah-dev/beamnow/blob/master/UNLICENSE" target="_blank" rel="noopener">The Unlicense (Public Domain)</a></dd>
+                </div>
+              </dl>
+            </div>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SECTION 01 — THE EDITORIAL COMMERCIAL ("BELIEVE NOW")
+         ================================================================ -->
+    <section id="film" class="section-film">
+      <div class="container">
+        <div class="section-header-bar">
+          <div>
+            <span class="mono-index">01 / CAMPAIGN FILM</span>
+            <h2 class="section-title">“Believe Now” — <em>An Editorial Short</em></h2>
+          </div>
+          <p class="section-caption">
+            A 17-second audio-visual choreography scored to the campaign track.
+            Press play to experience the beat-synced typography, live tool execution, and palette metamorphosis.
+          </p>
+        </div>
+
+        <!-- Cinema Frame -->
+        <div class="cinema-shell" id="cinemaShell">
+          <div class="cinema-topbar">
+            <div class="cinema-meta-left">
+              <span class="rec-dot" id="cinemaRecDot"></span>
+              <span class="mono-tag" id="cinemaSceneLabel">SCENE I — PRELUDE</span>
+              <span class="mono-tag hide-sm">· 24 FPS EDITORIAL CANVAS · STEREO</span>
+            </div>
+            <div class="cinema-meta-right">
+              <span class="mono-tag" id="cinemaLyricCue">“Ooh… believe now”</span>
+              <span class="mono-timecode" id="cinemaTimecode">00:00.00 / 00:16.80</span>
+            </div>
+          </div>
+
+          <!-- High-DPI Canvas + Overlay Stage -->
+          <div class="cinema-viewport" id="cinemaViewport">
+            <canvas id="commercialCanvas" width="1600" height="900" aria-label="BeamNow Editorial Commercial Video Canvas"></canvas>
+
+            <!-- Click-to-Play Curtain -->
+            <div class="cinema-curtain" id="cinemaCurtain">
+              <button id="curtainPlayBtn" type="button" class="curtain-play-button" aria-label="Play Commercial with Audio">
+                <span class="curtain-play-icon">▶</span>
+                <span class="curtain-play-text">
+                  <strong>Screen the Commercial</strong>
+                  <small>0:17 · Original Soundtrack Included</small>
+                </span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Scrubber & Transport Controls -->
+          <div class="cinema-controls">
+            <button id="filmPlayPauseBtn" type="button" class="transport-btn" aria-label="Play or Pause">
+              <span id="filmPlayPauseIcon">▶</span>
+              <span id="filmPlayPauseText">Play</span>
+            </button>
+
+            <button id="filmRestartBtn" type="button" class="transport-btn-ghost" title="Restart from 00:00">
+              ↺ Restart
+            </button>
+
+            <div class="timeline-track" id="filmTimelineTrack" role="slider" aria-label="Commercial Timeline" tabindex="0">
+              <div class="timeline-markers">
+                <span style="left: 0%" title="Scene I: Prelude">I</span>
+                <span style="left: 18%" title="Scene II: Restraint">II</span>
+                <span style="left: 35%" title="Scene III: Believe Now">III</span>
+                <span style="left: 57%" title="Scene IV: Palette Drop">IV</span>
+                <span style="left: 77%" title="Scene V: Finale">V</span>
+              </div>
+              <div class="timeline-progress" id="filmTimelineProgress"></div>
+            </div>
+
+            <button id="filmLoopBtn" type="button" class="transport-btn-ghost active" title="Toggle Loop">
+              ∞ Loop: On
+            </button>
+
+            <button id="filmExportBtn" type="button" class="transport-btn-ghost" title="Record and download this commercial as a .webm video with audio">
+              ↓ Export Video (.webm)
+            </button>
+
+            <button id="filmFullscreenBtn" type="button" class="transport-btn-ghost" title="Fullscreen Cinema">
+              ⛶ Fullscreen
+            </button>
+          </div>
+        </div>
+
+        <!-- Hidden Audio Element -->
+        <audio id="commercialAudio" src="./believe-now.mp3" preload="auto" crossorigin="anonymous"></audio>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SECTION 02 — INTERACTIVE SPECIMEN & THEME ATELIER
+         ================================================================ -->
+    <section id="atelier" class="section-atelier">
+      <div class="container">
+        <div class="section-header-bar">
+          <div>
+            <span class="mono-index">02 / THEME ATELIER &amp; LIVE SPECIMEN</span>
+            <h2 class="section-title">Crafted for <em>every</em> hour of the day.</h2>
+          </div>
+          <p class="section-caption">
+            Switch between the seven built-in presets or dial in your own custom RGB surfaces and corner geometry.
+            Every change writes directly to <code>%APPDATA%\BeamNow\config.toml</code>.
+          </p>
+        </div>
+
+        <!-- Preset Selector Strip -->
+        <div class="preset-strip" id="presetStrip" role="tablist" aria-label="BeamNow Theme Presets">
+          <!-- Populated dynamically by app.js -->
+        </div>
+
+        <!-- Custom Geometry & Color Bar -->
+        <div class="atelier-toolbar">
+          <div class="atelier-control-group">
+            <label for="radiusSlider" class="mono-tag">CORNER RADIUS: <span id="radiusValueLabel">8px</span></label>
+            <input type="range" id="radiusSlider" min="2" max="16" value="8" />
+          </div>
+          <div class="atelier-control-group">
+            <label class="color-picker-pill">
+              <input type="color" id="customBgPicker" value="#18181b" />
+              <span>Background</span>
+            </label>
+            <label class="color-picker-pill">
+              <input type="color" id="customSidebarPicker" value="#121214" />
+              <span>Sidebar</span>
+            </label>
+            <label class="color-picker-pill">
+              <input type="color" id="customAccentPicker" value="#e09260" />
+              <span>Accent</span>
+            </label>
+            <label class="color-picker-pill">
+              <input type="color" id="customTextPicker" value="#e4e4e8" />
+              <span>Text</span>
+            </label>
+          </div>
+          <div class="atelier-control-group">
+            <button type="button" id="copyTomlBtn" class="btn-copy-toml">
+              Copy <code>[theme]</code> TOML
+            </button>
+          </div>
+        </div>
+
+        <!-- Simulated Native BeamNow Window -->
+        <div class="app-stage-wrapper">
+          <div class="beam-window" id="beamWindow">
+            <!-- Native Titlebar -->
+            <div class="beam-titlebar">
+              <div class="beam-titlebar-left">
+                <span class="beam-app-icon">◆</span>
+                <span class="beam-window-title">BeamNow</span>
+              </div>
+              <div class="beam-window-controls" aria-hidden="true">
+                <span>─</span>
+                <span>□</span>
+                <span>×</span>
+              </div>
+            </div>
+
+            <!-- Main App Body -->
+            <div class="beam-body">
+              <!-- Minimalist Left Rail -->
+              <aside class="beam-sidebar">
+                <div class="beam-sidebar-top">
+                  <span class="beam-brand-text">BeamNow</span>
+                  <button type="button" id="simNewChatBtn" class="beam-new-btn">+ New</button>
+                </div>
+
+                <div class="beam-session-list" id="simSessionList">
+                  <button type="button" class="beam-session-row active" data-session="theme">
+                    ● Refactor theme engine
+                  </button>
+                  <button type="button" class="beam-session-row" data-session="audit">
+                    Audit HTTP tool calls
+                  </button>
+                  <button type="button" class="beam-session-row" data-session="empty">
+                    New chat (Empty state)
+                  </button>
+                </div>
+
+                <div class="beam-sidebar-footer">
+                  <span class="beam-footer-link">Settings</span>
+                  <span class="beam-footer-theme" id="simSidebarThemeDot">● Ember</span>
+                </div>
+              </aside>
+
+              <!-- Central Chat Area -->
+              <div class="beam-main">
+                <div class="beam-chat-header">
+                  <span class="beam-chat-title" id="simChatTitle">Refactor theme engine</span>
+                  <span class="beam-chat-workspace">~/projects/beamnow</span>
+                </div>
+
+                <div class="beam-transcript" id="simTranscript">
+                  <!-- Populated by app.js -->
+                </div>
+
+                <div class="beam-composer-wrap">
+                  <div class="beam-composer">
+                    <input
+                      type="text"
+                      id="simComposerInput"
+                      class="beam-composer-input"
+                      placeholder="Message BeamNow… (try typing a task and pressing Enter)"
+                    />
+                    <div class="beam-composer-bar">
+                      <div class="beam-composer-selectors">
+                        <span class="beam-selector">Kilo Code · kilo-auto/free ▾</span>
+                        <span class="beam-selector">Ask before changes ▾</span>
+                      </div>
+                      <button type="button" id="simSendBtn" class="beam-send-btn">Send</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         SECTION 03 — ARCHITECTURE & MANIFESTO
+         ================================================================ -->
+    <section id="architecture" class="section-architecture">
+      <div class="container">
+        <div class="section-header-bar">
+          <div>
+            <span class="mono-index">03 / THE ANATOMY OF RESTRAINT</span>
+            <h2 class="section-title">Everything an agent needs. <em>Nothing</em> it doesn’t.</h2>
+          </div>
+          <p class="section-caption">
+            Built in ~1,500 lines of clean Rust. No Electron wrapper, no background daemons, no mandatory cloud login.
+          </p>
+        </div>
+
+        <div class="editorial-columns">
+          <article class="editorial-column-card">
+            <span class="column-num">I.</span>
+            <h3>Zero-Key Onboarding</h3>
+            <p>
+              Launch <code>beamnow.exe</code> and start coding immediately. Out of the box, BeamNow routes through
+              <strong>Kilo Code’s</strong> free gateway (<code>kilo-auto/free</code>) and indexes zero-cost tool-calling models
+              from <strong>OpenRouter</strong> at startup.
+            </p>
+            <p class="column-meta">
+              Ready for BYOK? Add keys for Anthropic, OpenAI, NVIDIA NIM, DeepSeek, or point at local Ollama / vLLM / LM Studio endpoints.
+            </p>
+          </article>
+
+          <article class="editorial-column-card">
+            <span class="column-num">II.</span>
+            <h3>Six Surgical Tools</h3>
+            <p>
+              The agent operates directly inside your chosen workspace with six focused primitives:
+              <code>read_file</code>, <code>write_file</code>, <code>edit_file</code>, <code>list_dir</code>,
+              <code>grep</code>, and <code>run_shell</code>.
+            </p>
+            <p class="column-meta">
+              Every mutating action or shell command pauses for inline human approval right inside the transcript—unless you switch to Auto-approve.
+            </p>
+          </article>
+
+          <article class="editorial-column-card">
+            <span class="column-num">III.</span>
+            <h3>Public Domain Forever</h3>
+            <p>
+              Great developer tools should belong to the commons. BeamNow is dedicated to the public domain under
+              <strong>The Unlicense</strong>. Fork it, embed it, theme it, or ship it inside your own workflow with zero restrictions.
+            </p>
+            <p class="column-meta">
+              Single binary · Local JSON session history · Human-readable TOML configuration.
+            </p>
+          </article>
+        </div>
+
+        <!-- Closing Editorial Banner -->
+        <div class="closing-banner">
+          <div class="closing-banner-text">
+            <span class="mono-tag">RELEASE v0.1.0 · WINDOWS X64 &amp; SOURCE</span>
+            <h2>Begin your next session in silence.</h2>
+          </div>
+          <div class="closing-banner-actions">
+            <a href="https://github.com/ahpah-dev/beamnow/releases/download/v0.1.0/beamnow.exe" class="btn-editorial-primary">
+              <span>Download BeamNow.exe</span>
+              <span class="btn-meta">Direct Binary</span>
+            </a>
+            <a href="https://github.com/ahpah-dev/beamnow/releases/tag/v0.1.0" target="_blank" rel="noopener" class="btn-editorial-secondary">
+              <span>Release Notes (v0.1.0)</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="editorial-footer">
+    <div class="container footer-inner">
+      <div class="footer-left">
+        <span class="brand-diamond">◆</span>
+        <strong>BeamNow</strong>
+        <span class="footer-sep">·</span>
+        <span>Released under The Unlicense</span>
+      </div>
+      <div class="footer-right">
+        <a href="https://github.com/ahpah-dev/beamnow" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://github.com/ahpah-dev/beamnow/releases/tag/v0.1.0" target="_blank" rel="noopener">Releases</a>
+        <a href="https://github.com/ahpah-dev/beamnow/blob/master/UNLICENSE" target="_blank" rel="noopener">Unlicense</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./app.js"></script>
+</body>
+</html>
