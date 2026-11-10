@@ -7,7 +7,7 @@ use crate::llm::{Endpoint, Msg};
 use crate::session::{self, Entry, Session};
 use crate::theme::{self, Palette, RawPalette, ThemePreset};
 use crate::views;
-use eframe::egui::{self, KeyboardShortcut, Modifiers, Stroke};
+use eframe::egui::{self, KeyboardShortcut, Modifiers};
 use egui_commonmark::CommonMarkCache;
 use std::path::PathBuf;
 use std::sync::mpsc::{Receiver, Sender, channel};
@@ -372,13 +372,12 @@ impl eframe::App for BeamApp {
         let p = self.palette;
 
         egui::Panel::left("sidebar")
-            .default_size(268.0)
+            .default_size(232.0)
             .resizable(false)
             .frame(
                 egui::Frame::new()
                     .fill(p.sidebar)
-                    .stroke(Stroke::new(1.0, p.border))
-                    .inner_margin(egui::Margin::symmetric(14, 14)),
+                    .inner_margin(egui::Margin::symmetric(12, 12)),
             )
             .show(ui, |ui| views::sidebar::show(self, ui));
 
@@ -387,15 +386,14 @@ impl eframe::App for BeamApp {
                 .frame(
                     egui::Frame::new()
                         .fill(p.bg)
-                        .stroke(Stroke::new(1.0, p.border))
-                        .inner_margin(egui::Margin::symmetric(18, 10)),
+                        .inner_margin(egui::Margin::symmetric(20, 10)),
                 )
                 .show(ui, |ui| views::chat::header(self, ui));
             egui::Panel::bottom("composer")
                 .frame(
                     egui::Frame::new()
                         .fill(p.bg)
-                        .inner_margin(egui::Margin::symmetric(18, 6)),
+                        .inner_margin(egui::Margin::symmetric(20, 10)),
                 )
                 .show(ui, |ui| views::chat::composer(self, ui));
         }

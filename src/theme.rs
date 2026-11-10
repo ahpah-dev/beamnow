@@ -1,10 +1,10 @@
-//! Customizable theme system with built-in dark & light presets plus full user color editing.
+//! Minimalist, customizable theme system with built-in dark & light presets.
 
 use eframe::egui::{self, Color32, CornerRadius, FontId, Stroke, TextStyle, Visuals};
 use serde::{Deserialize, Serialize};
 
 /// Width of the centered reading column in the transcript and composer.
-pub const COLUMN: f32 = 780.0;
+pub const COLUMN: f32 = 720.0;
 
 #[derive(Serialize, Deserialize, Clone, Copy, Debug, PartialEq, Eq, Default)]
 #[serde(rename_all = "lowercase")]
@@ -44,19 +44,6 @@ impl ThemePreset {
             Self::Custom => "Custom",
         }
     }
-
-    pub fn subtitle(self) -> &'static str {
-        match self {
-            Self::Ember => "Warm charcoal & amber",
-            Self::Midnight => "Deep obsidian & electric blue",
-            Self::Nord => "Arctic slate & frost cyan",
-            Self::Forest => "Deep pine & emerald mint",
-            Self::Rose => "Velvet plum & rose gold",
-            Self::Daylight => "Crisp alabaster & cobalt",
-            Self::Paper => "Warm parchment & terracotta",
-            Self::Custom => "Your personalized palette",
-        }
-    }
 }
 
 /// Serializable theme configuration stored in `config.toml`.
@@ -73,7 +60,7 @@ impl Default for ThemeConfig {
         Self {
             preset: ThemePreset::Ember,
             custom: RawPalette::from_preset(ThemePreset::Ember),
-            corner_radius: 10,
+            corner_radius: 8,
         }
     }
 }
@@ -120,120 +107,120 @@ impl RawPalette {
         match preset {
             ThemePreset::Ember | ThemePreset::Custom => Self {
                 dark_mode: true,
-                bg: [26, 26, 30],
-                sidebar: [19, 19, 22],
-                input: [35, 35, 41],
-                user_bubble: [44, 42, 50],
-                tool_bg: [31, 31, 37],
-                border: [54, 54, 64],
-                hover: [45, 45, 54],
-                selected: [52, 48, 58],
-                text: [232, 232, 236],
-                muted: [142, 142, 156],
-                accent: [230, 148, 96],
-                accent_soft: [58, 40, 32],
-                ok: [114, 196, 132],
-                err: [236, 114, 114],
+                bg: [24, 24, 27],
+                sidebar: [18, 18, 20],
+                input: [32, 32, 36],
+                user_bubble: [39, 39, 44],
+                tool_bg: [29, 29, 33],
+                border: [46, 46, 52],
+                hover: [38, 38, 43],
+                selected: [45, 45, 52],
+                text: [228, 228, 232],
+                muted: [136, 136, 148],
+                accent: [224, 146, 96],
+                accent_soft: [48, 36, 28],
+                ok: [116, 192, 130],
+                err: [232, 112, 112],
             },
             ThemePreset::Midnight => Self {
                 dark_mode: true,
-                bg: [15, 18, 26],
-                sidebar: [11, 13, 20],
-                input: [22, 27, 38],
-                user_bubble: [28, 36, 54],
-                tool_bg: [19, 23, 33],
-                border: [40, 49, 68],
-                hover: [30, 38, 54],
-                selected: [36, 47, 68],
-                text: [228, 234, 245],
-                muted: [130, 144, 168],
+                bg: [14, 17, 23],
+                sidebar: [10, 12, 17],
+                input: [21, 25, 34],
+                user_bubble: [26, 33, 46],
+                tool_bg: [18, 22, 30],
+                border: [34, 41, 56],
+                hover: [27, 34, 47],
+                selected: [33, 42, 58],
+                text: [228, 233, 242],
+                muted: [126, 138, 160],
                 accent: [96, 165, 250],
-                accent_soft: [24, 40, 68],
-                ok: [74, 222, 128],
-                err: [248, 113, 113],
+                accent_soft: [22, 36, 60],
+                ok: [82, 208, 130],
+                err: [242, 112, 112],
             },
             ThemePreset::Nord => Self {
                 dark_mode: true,
                 bg: [46, 52, 64],
-                sidebar: [38, 43, 54],
-                input: [59, 66, 82],
-                user_bubble: [67, 76, 94],
-                tool_bg: [52, 59, 73],
-                border: [76, 86, 106],
-                hover: [67, 76, 94],
-                selected: [76, 86, 106],
+                sidebar: [39, 44, 54],
+                input: [55, 62, 76],
+                user_bubble: [64, 73, 90],
+                tool_bg: [51, 58, 71],
+                border: [69, 78, 96],
+                hover: [62, 70, 86],
+                selected: [70, 80, 98],
                 text: [236, 239, 244],
-                muted: [163, 174, 194],
+                muted: [158, 169, 188],
                 accent: [136, 192, 208],
-                accent_soft: [53, 72, 84],
+                accent_soft: [52, 68, 79],
                 ok: [163, 190, 140],
                 err: [191, 97, 106],
             },
             ThemePreset::Forest => Self {
                 dark_mode: true,
-                bg: [18, 25, 22],
-                sidebar: [13, 19, 16],
-                input: [25, 35, 30],
-                user_bubble: [32, 46, 39],
-                tool_bg: [22, 31, 27],
-                border: [42, 60, 51],
-                hover: [33, 47, 40],
-                selected: [40, 58, 49],
-                text: [226, 238, 231],
-                muted: [134, 158, 144],
-                accent: [86, 204, 150],
-                accent_soft: [24, 52, 40],
-                ok: [104, 214, 142],
-                err: [238, 116, 116],
+                bg: [17, 23, 20],
+                sidebar: [13, 18, 15],
+                input: [24, 32, 28],
+                user_bubble: [30, 41, 35],
+                tool_bg: [21, 28, 24],
+                border: [37, 50, 43],
+                hover: [29, 39, 34],
+                selected: [35, 48, 41],
+                text: [226, 236, 230],
+                muted: [132, 152, 140],
+                accent: [88, 198, 146],
+                accent_soft: [23, 46, 36],
+                ok: [104, 210, 140],
+                err: [234, 114, 114],
             },
             ThemePreset::Rose => Self {
                 dark_mode: true,
                 bg: [25, 23, 36],
                 sidebar: [19, 17, 28],
-                input: [33, 30, 48],
-                user_bubble: [44, 39, 62],
-                tool_bg: [30, 27, 43],
-                border: [58, 52, 80],
-                hover: [42, 38, 60],
-                selected: [52, 46, 72],
+                input: [32, 29, 46],
+                user_bubble: [41, 37, 58],
+                tool_bg: [29, 26, 41],
+                border: [48, 44, 68],
+                hover: [38, 35, 54],
+                selected: [46, 42, 65],
                 text: [234, 228, 242],
-                muted: [152, 144, 174],
+                muted: [148, 140, 168],
                 accent: [235, 152, 178],
-                accent_soft: [58, 36, 52],
+                accent_soft: [52, 34, 48],
                 ok: [148, 210, 172],
                 err: [235, 111, 146],
             },
             ThemePreset::Daylight => Self {
                 dark_mode: false,
-                bg: [248, 249, 252],
-                sidebar: [238, 241, 246],
+                bg: [250, 250, 252],
+                sidebar: [242, 243, 247],
                 input: [255, 255, 255],
-                user_bubble: [230, 238, 252],
-                tool_bg: [242, 244, 248],
-                border: [214, 220, 230],
-                hover: [228, 233, 242],
-                selected: [218, 226, 240],
-                text: [24, 28, 38],
-                muted: [104, 114, 132],
+                user_bubble: [236, 240, 248],
+                tool_bg: [244, 245, 248],
+                border: [224, 227, 234],
+                hover: [234, 237, 243],
+                selected: [226, 231, 240],
+                text: [26, 29, 36],
+                muted: [112, 118, 132],
                 accent: [37, 99, 235],
-                accent_soft: [224, 234, 254],
-                ok: [22, 150, 74],
-                err: [214, 48, 62],
+                accent_soft: [228, 236, 252],
+                ok: [24, 148, 74],
+                err: [212, 50, 62],
             },
             ThemePreset::Paper => Self {
                 dark_mode: false,
-                bg: [247, 242, 232],
-                sidebar: [237, 230, 216],
-                input: [253, 250, 243],
-                user_bubble: [236, 226, 208],
-                tool_bg: [241, 235, 222],
-                border: [214, 204, 186],
-                hover: [230, 221, 204],
-                selected: [222, 210, 190],
-                text: [46, 38, 32],
-                muted: [122, 110, 96],
-                accent: [194, 92, 52],
-                accent_soft: [242, 222, 210],
+                bg: [248, 244, 236],
+                sidebar: [240, 234, 223],
+                input: [253, 250, 244],
+                user_bubble: [238, 230, 216],
+                tool_bg: [243, 237, 227],
+                border: [222, 213, 198],
+                hover: [234, 226, 212],
+                selected: [226, 216, 200],
+                text: [44, 38, 32],
+                muted: [124, 113, 100],
+                accent: [192, 92, 54],
+                accent_soft: [242, 225, 214],
                 ok: [46, 138, 78],
                 err: [196, 58, 58],
             },
@@ -258,7 +245,7 @@ impl RawPalette {
             accent_soft: c(self.accent_soft),
             ok: c(self.ok),
             err: c(self.err),
-            corner_radius: corner_radius.clamp(2, 18),
+            corner_radius: corner_radius.clamp(2, 16),
         }
     }
 }
@@ -318,7 +305,7 @@ pub fn apply(ctx: &egui::Context, p: &Palette) {
     visuals.code_bg_color = p.tool_bg;
     visuals.override_text_color = Some(p.text);
     visuals.hyperlink_color = p.accent;
-    visuals.selection.bg_fill = p.accent.gamma_multiply(0.30);
+    visuals.selection.bg_fill = p.accent.gamma_multiply(0.28);
     visuals.selection.stroke = Stroke::new(1.0, p.accent);
 
     let radius = CornerRadius::same(p.corner_radius);
@@ -332,42 +319,43 @@ pub fn apply(ctx: &egui::Context, p: &Palette) {
         w.corner_radius = radius;
     }
 
+    // Minimalist low-chrome widgets: borderless at rest, soft surface fills on interaction.
     visuals.widgets.noninteractive.bg_fill = p.bg;
     visuals.widgets.noninteractive.weak_bg_fill = p.tool_bg;
     visuals.widgets.noninteractive.bg_stroke = Stroke::new(1.0, p.border);
     visuals.widgets.noninteractive.fg_stroke = Stroke::new(1.0, p.text);
 
-    visuals.widgets.inactive.weak_bg_fill = p.input;
-    visuals.widgets.inactive.bg_fill = p.input;
-    visuals.widgets.inactive.bg_stroke = Stroke::new(1.0, p.border);
+    visuals.widgets.inactive.weak_bg_fill = Color32::TRANSPARENT;
+    visuals.widgets.inactive.bg_fill = Color32::TRANSPARENT;
+    visuals.widgets.inactive.bg_stroke = Stroke::NONE;
     visuals.widgets.inactive.fg_stroke = Stroke::new(1.0, p.text);
 
     visuals.widgets.hovered.weak_bg_fill = p.hover;
     visuals.widgets.hovered.bg_fill = p.hover;
-    visuals.widgets.hovered.bg_stroke = Stroke::new(1.0, p.accent.gamma_multiply(0.65));
+    visuals.widgets.hovered.bg_stroke = Stroke::NONE;
     visuals.widgets.hovered.fg_stroke = Stroke::new(1.0, p.text);
 
     visuals.widgets.active.weak_bg_fill = p.selected;
     visuals.widgets.active.bg_fill = p.selected;
-    visuals.widgets.active.bg_stroke = Stroke::new(1.0, p.accent);
+    visuals.widgets.active.bg_stroke = Stroke::NONE;
     visuals.widgets.active.fg_stroke = Stroke::new(1.0, p.text);
 
     visuals.widgets.open.weak_bg_fill = p.selected;
     visuals.widgets.open.bg_fill = p.selected;
-    visuals.widgets.open.bg_stroke = Stroke::new(1.0, p.accent);
+    visuals.widgets.open.bg_stroke = Stroke::new(1.0, p.border);
     visuals.widgets.open.fg_stroke = Stroke::new(1.0, p.text);
 
     let mut style = (*ctx.global_style()).clone();
     style.visuals = visuals;
-    style.spacing.item_spacing = egui::vec2(8.0, 8.0);
-    style.spacing.button_padding = egui::vec2(11.0, 6.0);
-    style.spacing.window_margin = egui::Margin::same(12);
+    style.spacing.item_spacing = egui::vec2(8.0, 7.0);
+    style.spacing.button_padding = egui::vec2(10.0, 5.0);
+    style.spacing.window_margin = egui::Margin::same(10);
     style.text_styles = [
-        (TextStyle::Heading, FontId::proportional(22.0)),
-        (TextStyle::Body, FontId::proportional(15.0)),
+        (TextStyle::Heading, FontId::proportional(20.0)),
+        (TextStyle::Body, FontId::proportional(14.5)),
         (TextStyle::Button, FontId::proportional(13.5)),
         (TextStyle::Small, FontId::proportional(12.0)),
-        (TextStyle::Monospace, FontId::monospace(13.0)),
+        (TextStyle::Monospace, FontId::monospace(12.5)),
     ]
     .into();
     ctx.set_global_style(style);
@@ -383,14 +371,14 @@ mod tests {
             let cfg = ThemeConfig {
                 preset,
                 custom: RawPalette::from_preset(preset),
-                corner_radius: 10,
+                corner_radius: 8,
             };
             let serialized = toml::to_string(&cfg).expect("serialize ThemeConfig");
-            let restored: ThemeConfig = toml::from_str(&serialized).expect("deserialize ThemeConfig");
+            let restored: ThemeConfig =
+                toml::from_str(&serialized).expect("deserialize ThemeConfig");
             assert_eq!(cfg, restored);
             let p = restored.palette();
-            assert_eq!(p.corner_radius, 10);
+            assert_eq!(p.corner_radius, 8);
         }
     }
 }
-

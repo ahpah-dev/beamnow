@@ -1,3 +1,5 @@
+#![cfg_attr(not(debug_assertions), windows_subsystem = "windows")]
+
 mod agent;
 mod app;
 mod catalog;
@@ -5,8 +7,8 @@ mod config;
 mod llm;
 mod session;
 mod theme;
-mod views;
 mod tools;
+mod views;
 
 fn main() -> eframe::Result {
     let options = eframe::NativeOptions {
